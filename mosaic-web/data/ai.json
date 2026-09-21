@@ -1,0 +1,37 @@
+{
+  "_note": "Pre-generated AI content. Produced once (or by scripts/generate-ai.mjs with your own Gemini key) and served as static files so the live site makes NO API calls and needs NO key.",
+  "generatedBy": "gemini-2.0-flash (pre-generated)",
+  "content": {
+    "alice-johnson": {
+      "riskLevel": "High",
+      "summary": "Between June and September, a new First Premier Bank credit card was opened in your name with a $4,780 balance, and two hard inquiries you may not recognize (First Premier Bank and Synchrony Bank) appeared. Your score dropped 41 points over the same period. A brand-new account plus multiple unfamiliar inquiries in a short window is a common pattern for identity theft. Your existing Chase, Toyota, and Navient accounts look unchanged and normal.",
+      "recommendedActions": [
+        "Place a free fraud alert with any one of the three bureaus (it notifies all three).",
+        "Consider a credit freeze to block new accounts while you investigate.",
+        "Dispute the First Premier Bank account in writing (draft letter below).",
+        "Report the identity theft at IdentityTheft.gov to get a recovery plan."
+      ],
+      "letter": "Alice Johnson\n[Your Address]\n[City, State ZIP]\n\n[Date]\n\nDispute Department\n[Credit Bureau Name]\n[Bureau Address]\n\nRe: Dispute of fraudulent account — SSN ending 4821\n\nTo Whom It May Concern:\n\nI am writing to dispute the following account that appears on my credit report and that I did not open or authorize:\n\n  Creditor: First Premier Bank\n  Type: Credit card\n  Date opened: August 14, 2026\n  Reported balance: $4,780\n\nI have no knowledge of this account and believe it is the result of identity theft. I am also disputing the associated hard inquiries dated August 14, 2026 (First Premier Bank) and August 2, 2026 (Synchrony Bank), which I did not authorize.\n\nPlease investigate this matter, remove the fraudulent account and inquiries from my report, and send me written confirmation of the results. I have placed a fraud alert on my file and am filing a report at IdentityTheft.gov.\n\nSincerely,\nAlice Johnson"
+    },
+    "marcus-lee": {
+      "riskLevel": "Medium",
+      "summary": "Two new items appeared since May. The Honda Financial auto loan ($22,000, opened July 20) is paired with a matching hard inquiry two days earlier, which usually means it was a purchase you made — review it, but it looks expected. The second item, a $540 collection account from Midland Credit Management, has no matching origin and is worth verifying: collection agencies sometimes report debts that are mistaken, already paid, or not yours. Your score dipped 13 points, largely consistent with a new loan and a collection.",
+      "recommendedActions": [
+        "Confirm the Honda auto loan is yours — if so, no action needed.",
+        "Send Midland Credit Management a debt validation request (draft below) before paying anything.",
+        "If Midland cannot validate the debt, dispute it with the credit bureaus."
+      ],
+      "letter": "Marcus Lee\n[Your Address]\n[City, State ZIP]\n\n[Date]\n\nMidland Credit Management\n[Collector Address]\n\nRe: Request for debt validation — account reported August 1, 2026\n\nTo Whom It May Concern:\n\nI am responding to your report of a collection account in the amount of $540 on my credit file. I do not recognize this debt. Under the Fair Debt Collection Practices Act, I am requesting that you validate it before any further collection activity.\n\nPlease provide:\n  1. The name and address of the original creditor.\n  2. The original account number and an itemized statement of the amount owed.\n  3. Proof that you are authorized to collect this debt.\n\nUntil this debt is validated, please cease reporting it to the credit bureaus. Please respond in writing.\n\nSincerely,\nMarcus Lee"
+    },
+    "priya-patel": {
+      "riskLevel": "Low",
+      "summary": "The changes here look like normal, self-initiated activity. Your Citi Double Cash balance rose from $800 to $3,200 — a larger purchase or two, still well under your $12,000 limit — and there is one new hard inquiry from Citi dated September 5, which lines up with a credit-limit or account request you likely made yourself. Your score moved only 3 points. There are no new accounts and no unfamiliar creditors, so there is no sign of fraud. Keep monitoring as routine.",
+      "recommendedActions": [
+        "Confirm the Citi inquiry was a request you made (e.g., a limit increase).",
+        "No dispute is needed unless you don't recognize the inquiry.",
+        "Keep checking on your normal schedule — a fraud alert is optional peace of mind."
+      ],
+      "letter": "Priya Patel\n[Your Address]\n[City, State ZIP]\n\n[Date]\n\n[Credit Bureau Name]\n[Bureau Address]\n\nRe: Precautionary fraud alert request — SSN ending 3355\n\nTo Whom It May Concern:\n\nAs a precaution, I would like to place an initial fraud alert on my credit file. I have reviewed my recent report and recognize the activity on it, but I want the added protection of requiring identity verification before new credit is opened in my name.\n\nPlease place a one-year fraud alert on my file and send written confirmation.\n\nSincerely,\nPriya Patel"
+    }
+  }
+}

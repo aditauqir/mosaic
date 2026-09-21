@@ -1,0 +1,55 @@
+{
+  "_note": "Plain-language financial guidance for the Learn tab. Static, educational, not advice.",
+  "articles": [
+    {
+      "id": "score-basics",
+      "title": "How your credit score actually moves",
+      "tag": "Basics",
+      "body": [
+        "Your score is a summary of how you handle borrowed money. The biggest factors are paying on time and how much of your available credit you're using (your \"utilization\").",
+        "Small month-to-month swings of a few points are normal. Large drops usually have a specific cause: a missed payment, a new account, a big balance jump, or a hard inquiry.",
+        "When Mosaic flags a change, it's showing you the cause — not deciding whether it's bad. You decide."
+      ]
+    },
+    {
+      "id": "inquiries",
+      "title": "Hard vs. soft inquiries",
+      "tag": "Basics",
+      "body": [
+        "A soft inquiry (checking your own report, a pre-approval offer) does not affect your score and isn't visible to lenders.",
+        "A hard inquiry happens when you apply for credit — a card, loan, or mortgage. It can shave a few points and stays on your report about two years.",
+        "The warning sign is a hard inquiry from a company you never applied to. That can mean someone is trying to open credit in your name."
+      ]
+    },
+    {
+      "id": "spot-fraud",
+      "title": "Spotting identity theft on your report",
+      "tag": "Fraud",
+      "body": [
+        "Red flags: an account you don't recognize, a hard inquiry you didn't authorize, a collection for a debt that isn't yours, or an address you've never lived at.",
+        "One unfamiliar item can be an error. Several appearing in a short window — especially a new account plus new inquiries — is the classic identity-theft pattern.",
+        "If you see this, don't panic and don't pay anything yet. Place a fraud alert, then dispute the items in writing (Mosaic drafts the letter for you)."
+      ]
+    },
+    {
+      "id": "alert-vs-freeze",
+      "title": "Fraud alert vs. credit freeze",
+      "tag": "Fraud",
+      "body": [
+        "A fraud alert is free, lasts one year, and tells lenders to verify your identity before opening credit. You place it with one bureau and it notifies the other two.",
+        "A credit freeze is stronger: it blocks new credit from being opened at all until you lift it. It's also free, but you must place and lift it with each bureau separately.",
+        "Use an alert for \"something looks off, be cautious.\" Use a freeze when you're confident fraud has occurred or want maximum protection."
+      ]
+    },
+    {
+      "id": "disputes",
+      "title": "Your right to dispute and validate",
+      "tag": "Your rights",
+      "body": [
+        "Under the Fair Credit Reporting Act, you can dispute anything inaccurate on your report, and the bureau must investigate — usually within 30 days.",
+        "For a collection you don't recognize, the Fair Debt Collection Practices Act lets you demand validation before paying. Make the collector prove the debt is yours and the amount is right.",
+        "Always keep it in writing and keep copies. Mosaic generates the letter; you review, edit, and send it yourself — nothing is filed automatically."
+      ]
+    }
+  ]
+}

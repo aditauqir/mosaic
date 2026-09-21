@@ -1,0 +1,539 @@
+/* Mosaic web demo — design tokens mirrored from the iOS app
+   (Mosaic/Components/Color+Hex.swift, LiquidGlass.swift, MosaicChrome.swift). */
+
+:root {
+  /* Core palette — 1:1 with Color+Hex.swift */
+  --canvas: #f8f5f1;      /* mosaicWarmBackground */
+  --card: #ffffff;        /* mosaicCardBg / mosaicSheet */
+  --ink: #171738;         /* mosaicInk / mosaicNavy */
+  --muted: #7180b9;       /* mosaicMuted / mosaicSubtle */
+  --line: #e7e4f2;        /* mosaicLine / mosaicCardBorder */
+  --violet: #3423a6;      /* mosaicViolet / mosaicAccent */
+  --purple: #2e1760;      /* mosaicPurple */
+  --mint: #dff3e4;        /* mosaicFill / mosaicMint */
+
+  /* Home background palette */
+  --blush: #ffd6ff;
+  --lavender: #e7c6ff;
+  --lilac: #c8b6ff;
+  --periwinkle: #b8c0ff;
+  --sky: #bbd0ff;
+
+  /* Severity — red for loss, purple for watch, mint for clear */
+  --high: #d0263f;
+  --high-soft: #fbecef;
+  --med: var(--purple);
+  --med-soft: #efe9fb;
+  --low: #1f7a4d;
+  --low-soft: var(--mint);
+
+  /* Shape + depth — the app's liquid-glass cards */
+  --r-card: 28px;
+  --r-inner: 18px;
+  --r-pill: 999px;
+  --shadow: 0 10px 30px rgba(23, 23, 56, .06), 0 1px 2px rgba(23, 23, 56, .04);
+  --shadow-lift: 0 16px 40px rgba(23, 23, 56, .10), 0 1px 2px rgba(23, 23, 56, .05);
+
+  /* Neue Montreal is the app face; Inter Tight is the closest free stand-in.
+     Drop the licensed .otf files into fonts/ and add @font-face to match exactly. */
+  --font: "Neue Montreal", "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  font-family: var(--font);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 148px; /* clears the floating tab bar */
+}
+
+/* The app's barely-there grain overlay (MosaicPageBackground.swift) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(23, 23, 56, .05) 1px, transparent 1px);
+  background-size: 5px 5px;
+  opacity: .45;
+}
+
+body > * { position: relative; z-index: 1; }
+
+h1, h2, h3 { letter-spacing: -.025em; font-weight: 700; }
+p { margin: 0; }
+
+/* ---------- Synthetic-data notice (SyntheticBadge.swift) ---------- */
+.demo-banner {
+  background: linear-gradient(90deg, rgba(231, 198, 255, .35), rgba(200, 182, 255, .35));
+  border-bottom: 1px solid var(--line);
+  color: var(--violet);
+  font-size: 12.5px;
+  line-height: 1.5;
+  text-align: center;
+  padding: 10px 20px;
+}
+.demo-banner strong { font-weight: 700; }
+
+/* ---------- Brand ---------- */
+.logo {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--violet);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(52, 35, 166, .28);
+}
+.logo::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background:
+    linear-gradient(#fff, #fff) 0 0 / 6px 6px no-repeat,
+    linear-gradient(#fff, #fff) 100% 0 / 6px 6px no-repeat,
+    linear-gradient(#fff, #fff) 0 100% / 6px 6px no-repeat,
+    linear-gradient(#fff, #fff) 100% 100% / 6px 6px no-repeat;
+  border-radius: 2px;
+}
+.logo.big { width: 46px; height: 46px; border-radius: 14px; }
+.logo.big::before { width: 21px; height: 21px; background-size: 8px 8px; }
+
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand .wordmark { font-size: 16px; font-weight: 500; letter-spacing: -.01em; }
+
+/* ---------- Top bar (MosaicTopBar) ---------- */
+.app-header {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 20px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.synthetic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .09em;
+  color: var(--violet);
+  background: rgba(255, 255, 255, .42);
+  border: 1px solid rgba(52, 35, 166, .24);
+  border-radius: var(--r-pill);
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.shell-main { max-width: 760px; margin: 0 auto; padding: 18px 20px 40px; }
+
+/* ---------- Welcome / sign-in (WelcomeView) ---------- */
+.signin-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 20px 40px;
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+}
+.signin-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  background: var(--card);
+  border-left: 3px solid var(--ink);
+  border-radius: 0 12px 12px 0;
+  padding: 10px 18px 10px 12px;
+  box-shadow: var(--shadow);
+}
+.signin-wrap h1 {
+  font-size: clamp(36px, 6.4vw, 56px);
+  line-height: 1.04;
+  margin: 40px 0 0;
+  max-width: 13ch;
+}
+.tagline {
+  color: var(--muted);
+  font-size: clamp(16px, 1.9vw, 19px);
+  line-height: 1.5;
+  margin-top: 22px;
+  max-width: 44ch;
+}
+.signin-cta { margin-top: auto; padding-top: 64px; display: flex; flex-direction: column; gap: 12px; }
+.signin-note {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.55;
+  text-align: center;
+  margin-top: 6px;
+}
+.privacy-note { margin-top: 14px; }
+.privacy-note[hidden] { display: none !important; }
+
+/* ---------- Screen headings ---------- */
+.screen-title { font-size: clamp(30px, 4.4vw, 40px); line-height: 1.08; margin: 0 0 10px; }
+.screen-sub {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0 0 28px;
+  max-width: 56ch;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.link-back {
+  border: none;
+  background: none;
+  color: var(--violet);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 22px;
+}
+.link-back:hover { color: var(--purple); }
+
+/* ---------- Hero score block (OverviewView) ---------- */
+.hero { text-align: center; padding: 8px 0 30px; }
+.hero-title { font-size: clamp(24px, 3.4vw, 30px); margin: 0 0 14px; }
+.hero-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: clamp(50px, 9vw, 74px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1;
+}
+.hero-arrow { font-size: .42em; font-weight: 700; }
+.hero-arrow.down { color: var(--high); }
+.hero-arrow.up { color: var(--low); }
+.hero-arrow.flat { color: var(--muted); }
+.hero-caption { margin-top: 12px; }
+.hero-note { margin-top: 14px; color: var(--muted); font-size: 15px; }
+.hero-note strong { color: var(--ink); font-size: 19px; font-weight: 700; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow);
+  padding: 24px 26px;
+  margin-bottom: 18px;
+}
+.card.flagged { border-color: var(--violet); }
+.card h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Lavender AI notice strip (RecoveryView banner) */
+.ai-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: linear-gradient(120deg, var(--lavender), var(--lilac));
+  color: var(--violet);
+  border-radius: 20px;
+  padding: 16px 20px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+.ai-banner .spark { flex: none; font-size: 15px; line-height: 1.4; }
+
+.ai-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--violet);
+  background: var(--med-soft);
+  padding: 4px 9px;
+  border-radius: var(--r-pill);
+}
+
+/* ---------- Report context ---------- */
+.person-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.person-head .name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+.person-head .ssn { color: var(--muted); font-size: 13.5px; line-height: 1.5; margin-top: 6px; }
+
+.risk-badge {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 7px 13px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.risk-High { background: var(--high-soft); color: var(--high); }
+.risk-Medium { background: var(--med-soft); color: var(--med); }
+.risk-Low { background: var(--low-soft); color: var(--low); }
+
+/* ---------- Detected changes ---------- */
+.change { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+.change:first-of-type { border-top: none; padding-top: 0; }
+.change:last-of-type { padding-bottom: 0; }
+.change .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 7px; flex: none; }
+.change.sev-high .dot { background: var(--high); }
+.change.sev-med .dot { background: var(--med); }
+.change.sev-low .dot { background: var(--low); }
+.change .body .title { font-weight: 500; font-size: 16px; }
+.change .body .desc { font-size: 14px; color: var(--muted); margin-top: 4px; line-height: 1.55; }
+
+/* ---------- Mosaic's read ---------- */
+.summary-text { line-height: 1.6; font-size: 15.5px; }
+.actions-list { list-style: none; margin: 18px 0 0; padding: 0; }
+.actions-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.actions-list li::before {
+  content: "→";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+/* ---------- Letter editor ---------- */
+.letter-area {
+  width: 100%;
+  min-height: 340px;
+  resize: vertical;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 18px;
+  color: var(--ink);
+  background: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: var(--r-inner);
+}
+.letter-area:focus { outline: 2px solid var(--lilac); outline-offset: 1px; border-color: var(--lilac); }
+.letter-tools { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+/* ---------- Buttons (LiquidGlassButtonStyle) ---------- */
+.btn {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  cursor: pointer;
+  border-radius: var(--r-pill);
+  padding: 14px 24px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.btn:hover { box-shadow: var(--shadow-lift); }
+.btn:active { transform: scale(.985); }
+
+.btn.primary { background: var(--violet); border-color: var(--violet); color: #fff; }
+.btn.primary:hover { filter: brightness(1.08); }
+
+/* The signature lavender pill with its violet icon badge */
+.btn.lavender {
+  background: linear-gradient(120deg, var(--lavender), var(--lilac));
+  border-color: transparent;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.btn.lavender .badge {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+.btn.block { display: flex; width: 100%; align-items: center; justify-content: center; padding: 17px 24px; font-size: 16px; }
+
+/* ---------- Drop zone + file tray ---------- */
+.dropzone {
+  border: 1.5px dashed var(--lilac);
+  border-radius: var(--r-card);
+  background: rgba(255, 255, 255, .62);
+  padding: 52px 24px;
+  text-align: center;
+  transition: border-color .15s, background .15s;
+  margin-bottom: 32px;
+}
+.dropzone.over { border-color: var(--violet); background: linear-gradient(120deg, rgba(231, 198, 255, .5), rgba(200, 182, 255, .5)); }
+.dropzone.processing { border-style: solid; border-color: var(--line); background: var(--card); text-align: left; box-shadow: var(--shadow); }
+.dz-ico {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(52, 35, 166, .26);
+}
+.dz-text { font-weight: 500; font-size: 17px; }
+.dz-hint { color: var(--muted); font-size: 13.5px; margin-top: 6px; }
+.proc-list { max-width: 440px; margin: 0 auto; }
+.proc-step { font-size: 14.5px; padding: 8px 0; color: var(--muted); }
+.proc-step .ok { color: var(--low); font-weight: 700; }
+.proc-step .spin { color: var(--violet); }
+
+.tray-title { margin: 0 0 14px; }
+.file-tray { display: flex; flex-direction: column; gap: 12px; }
+.file-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: 22px;
+  padding: 16px 20px;
+  cursor: grab;
+  box-shadow: var(--shadow);
+  transition: border-color .15s, box-shadow .15s, transform .1s;
+}
+.file-card:hover { border-color: var(--lilac); box-shadow: var(--shadow-lift); }
+.file-card:active { cursor: grabbing; }
+.file-card.dragging { opacity: .45; }
+.file-ico {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--mint);
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+}
+.file-name { font-weight: 500; font-size: 15.5px; }
+.file-sub { color: var(--muted); font-size: 13px; margin-top: 3px; }
+
+.tray-cta { margin-bottom: 28px; }
+
+/* ---------- Learn ---------- */
+.learn-list { display: flex; flex-direction: column; gap: 18px; }
+.learn-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.learn-head h3 { margin: 0; }
+.learn-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--violet);
+  background: var(--med-soft);
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.learn-p { line-height: 1.65; font-size: 15px; color: var(--ink); margin: 12px 0 0; }
+
+/* ---------- Floating tab bar (MainTabView) ---------- */
+.tab-bar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  gap: 4px;
+  width: calc(100% - 32px);
+  max-width: 440px;
+  padding: 8px;
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: var(--r-pill);
+  box-shadow: 0 12px 34px rgba(23, 23, 56, .14);
+}
+.tab {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: var(--r-pill);
+  padding: 8px 4px 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: background .15s, color .15s;
+}
+.tab svg { width: 19px; height: 19px; }
+.tab:hover { background: rgba(231, 228, 242, .6); }
+.tab.active { background: var(--mint); color: var(--violet); }
+.tab.is-disabled { color: var(--muted); }
+
+.app-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 8px 20px 24px;
+}
+
+@media (max-width: 560px) {
+  .app-header { padding: 18px 20px 4px; }
+  .card { padding: 22px 20px; border-radius: 24px; }
+  .signin-wrap { padding-top: 36px; }
+  .tab { font-size: 10px; }
+}

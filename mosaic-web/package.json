@@ -1,0 +1,11 @@
+{
+  "name": "mosaic-web-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static web demo of Mosaic credit-report analysis. Synthetic data, pre-generated AI, no server.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "generate-ai": "node scripts/generate-ai.mjs"
+  }
+}

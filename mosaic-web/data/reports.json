@@ -1,0 +1,92 @@
+{
+  "_note": "SYNTHETIC DATA. These are fictional people generated for a demo. No real credit reports, no real SSNs, no real accounts.",
+  "reports": [
+    {
+      "id": "alice-johnson",
+      "name": "Alice Johnson",
+      "maskedSsn": "•••-••-4821",
+      "scenario": "Possible identity theft",
+      "baseline": {
+        "date": "2026-06-01",
+        "score": 742,
+        "accounts": [
+          { "id": "visa-chase", "creditor": "Chase Freedom", "type": "credit_card", "opened": "2019-03-11", "balance": 1240, "limit": 8000, "status": "current" },
+          { "id": "auto-toyota", "creditor": "Toyota Financial", "type": "auto_loan", "opened": "2023-08-02", "balance": 18500, "status": "current" },
+          { "id": "student-navient", "creditor": "Navient", "type": "student_loan", "opened": "2016-09-01", "balance": 9200, "status": "current" }
+        ],
+        "inquiries": [
+          { "creditor": "Chase", "date": "2019-03-10", "type": "hard" }
+        ]
+      },
+      "current": {
+        "date": "2026-09-01",
+        "score": 701,
+        "accounts": [
+          { "id": "visa-chase", "creditor": "Chase Freedom", "type": "credit_card", "opened": "2019-03-11", "balance": 1310, "limit": 8000, "status": "current" },
+          { "id": "auto-toyota", "creditor": "Toyota Financial", "type": "auto_loan", "opened": "2023-08-02", "balance": 17200, "status": "current" },
+          { "id": "student-navient", "creditor": "Navient", "type": "student_loan", "opened": "2016-09-01", "balance": 8900, "status": "current" },
+          { "id": "card-firstpremier", "creditor": "First Premier Bank", "type": "credit_card", "opened": "2026-08-14", "balance": 4780, "limit": 5000, "status": "current" }
+        ],
+        "inquiries": [
+          { "creditor": "Chase", "date": "2019-03-10", "type": "hard" },
+          { "creditor": "First Premier Bank", "date": "2026-08-14", "type": "hard" },
+          { "creditor": "Synchrony Bank", "date": "2026-08-02", "type": "hard" }
+        ]
+      }
+    },
+    {
+      "id": "marcus-lee",
+      "name": "Marcus Lee",
+      "maskedSsn": "•••-••-1907",
+      "scenario": "Mixed — one expected, one unfamiliar",
+      "baseline": {
+        "date": "2026-05-15",
+        "score": 688,
+        "accounts": [
+          { "id": "amex", "creditor": "American Express", "type": "credit_card", "opened": "2018-05-20", "balance": 2100, "limit": 15000, "status": "current" },
+          { "id": "mortgage-wf", "creditor": "Wells Fargo Home Mortgage", "type": "mortgage", "opened": "2021-04-30", "balance": 265000, "status": "current" }
+        ],
+        "inquiries": []
+      },
+      "current": {
+        "date": "2026-09-10",
+        "score": 675,
+        "accounts": [
+          { "id": "amex", "creditor": "American Express", "type": "credit_card", "opened": "2018-05-20", "balance": 2300, "limit": 15000, "status": "current" },
+          { "id": "mortgage-wf", "creditor": "Wells Fargo Home Mortgage", "type": "mortgage", "opened": "2021-04-30", "balance": 262000, "status": "current" },
+          { "id": "auto-honda", "creditor": "Honda Financial Services", "type": "auto_loan", "opened": "2026-07-20", "balance": 22000, "status": "current" },
+          { "id": "collection-midland", "creditor": "Midland Credit Management", "type": "collection", "opened": "2026-08-01", "balance": 540, "status": "collection" }
+        ],
+        "inquiries": [
+          { "creditor": "Honda Financial Services", "date": "2026-07-18", "type": "hard" }
+        ]
+      }
+    },
+    {
+      "id": "priya-patel",
+      "name": "Priya Patel",
+      "maskedSsn": "•••-••-3355",
+      "scenario": "Normal activity — likely no fraud",
+      "baseline": {
+        "date": "2026-07-01",
+        "score": 771,
+        "accounts": [
+          { "id": "citi", "creditor": "Citi Double Cash", "type": "credit_card", "opened": "2020-02-14", "balance": 800, "limit": 12000, "status": "current" },
+          { "id": "student-sofi", "creditor": "SoFi", "type": "student_loan", "opened": "2019-08-15", "balance": 12000, "status": "current" }
+        ],
+        "inquiries": []
+      },
+      "current": {
+        "date": "2026-09-15",
+        "score": 768,
+        "accounts": [
+          { "id": "citi", "creditor": "Citi Double Cash", "type": "credit_card", "opened": "2020-02-14", "balance": 3200, "limit": 12000, "status": "current" },
+          { "id": "student-sofi", "creditor": "SoFi", "type": "student_loan", "opened": "2019-08-15", "balance": 11500, "status": "current" }
+        ],
+        "inquiries": [
+          { "creditor": "Citi", "date": "2026-09-05", "type": "hard" }
+        ]
+      }
+    }
+  ]
+}
